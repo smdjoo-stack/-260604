@@ -14,18 +14,18 @@
  * Theme: prefers-color-scheme 자동 감지 + localStorage 토글 영속
  * Anti-AI-Slop: §2 negative-list 준수
  */
- 
+
 /* ── 1. CI Constants ──────────────────────────────────────────── */
 :root {
   --cmds-green:        #134538;
   --cmds-green-bright: #1e6b55;
   --cmds-pink:         #E985A2;
- 
+
   --font-sans:    "SF Pro Display", "SF Pro Text", "Pretendard", system-ui, sans-serif;
   --font-display: "SF Pro Display", "Pretendard", sans-serif;
   --font-mono:    "SF Mono", "JetBrains Mono", ui-monospace, monospace;
 }
- 
+
 /* ── 2. Light theme — Green + White text ── */
 [data-theme="light"] {
   --bg:          #F7F6F3;
@@ -43,7 +43,7 @@
   --tag-bg:      rgba(19, 69, 56, 0.09);
   --tag-color:   var(--cmds-green);
 }
- 
+
 /* ── 3. Dark theme — Pink + Dark text ── */
 [data-theme="dark"] {
   --bg:          #111210;
@@ -61,10 +61,10 @@
   --tag-bg:      rgba(233, 133, 162, 0.11);
   --tag-color:   var(--cmds-pink);
 }
- 
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 body {
   font-family: var(--font-sans);
   background: var(--bg);
@@ -74,10 +74,10 @@ body {
   width: 100vw;
   transition: background 0.28s, color 0.28s;
 }
- 
+
 /* ── Slideshow container ── */
 .deck { width: 100%; height: 100%; position: relative; }
- 
+
 .slide {
   display: none;
   position: absolute;
@@ -88,12 +88,12 @@ body {
   animation: up .32s ease;
 }
 .slide.active { display: flex; }
- 
+
 @keyframes up {
   from { opacity: 0; transform: translateY(9px); }
   to   { opacity: 1; transform: translateY(0); }
 }
- 
+
 /* Subtle bg circle — not a gradient, solid at 4% */
 .slide::after {
   content: '';
@@ -105,7 +105,7 @@ body {
   opacity: 0.04;
   pointer-events: none;
 }
- 
+
 /* ── Typography ── */
 .eyebrow {
   display: inline-flex;
@@ -122,7 +122,7 @@ body {
   width: fit-content;
   flex-shrink: 0;
 }
- 
+
 h1 {
   font-family: var(--font-display);
   font-size: 74px;
@@ -134,7 +134,7 @@ h1 {
   flex-shrink: 0;
 }
 h1 .a { color: var(--accent); }
- 
+
 h2.title {
   font-family: var(--font-display);
   font-size: 50px;
@@ -152,7 +152,7 @@ h2 .sub {
   display: block;
   letter-spacing: 0;
 }
- 
+
 .lead {
   font-size: 21px;
   color: var(--text-sub);
@@ -161,7 +161,7 @@ h2 .sub {
   text-wrap: pretty;
   flex-shrink: 0;
 }
- 
+
 .rule {
   width: 36px; height: 3px;
   background: var(--accent);
@@ -169,7 +169,7 @@ h2 .sub {
   margin: 16px 0 28px;
   flex-shrink: 0;
 }
- 
+
 /* ── Cards (2-col grid) ── */
 .grid-2 {
   display: grid;
@@ -179,7 +179,7 @@ h2 .sub {
   flex: 1;
   min-height: 0;
 }
- 
+
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -188,7 +188,7 @@ h2 .sub {
   position: relative;
   overflow: hidden;
 }
- 
+
 /* 상단 2px accent bar (left border 대신 top bar 사용 — anti-slop §2.1 준수) */
 .card::before {
   content: '';
@@ -197,7 +197,7 @@ h2 .sub {
   height: 2px;
   background: var(--accent);
 }
- 
+
 .card h3 {
   font-size: 20px;
   font-weight: 700;
@@ -210,7 +210,7 @@ h2 .sub {
   line-height: 1.7;
   text-wrap: pretty;
 }
- 
+
 /* 예시 박스 — left border 없이 background tint만 (anti-slop §2.1) */
 .eg {
   margin-top: 11px;
@@ -221,7 +221,7 @@ h2 .sub {
   padding: 9px 13px;
   border-radius: 6px;
 }
- 
+
 /* ── Step row ── */
 .step-row {
   display: flex;
@@ -251,7 +251,7 @@ h2 .sub {
 }
 .step h4 { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 7px; }
 .step p  { font-size: 16px; color: var(--text-sub); line-height: 1.65; text-wrap: pretty; }
- 
+
 /* ── List ── */
 .list {
   display: flex;
@@ -286,7 +286,7 @@ h2 .sub {
 }
 .li h4 { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .li p  { font-size: 17px; color: var(--text-sub); line-height: 1.7; text-wrap: pretty; }
- 
+
 /* ── Callout Box — §3.2 허용 컴포넌트: tint bg + label/body (left border 없음) ── */
 .callout {
   background: var(--accent-soft);
@@ -310,7 +310,7 @@ h2 .sub {
   line-height: 1.8;
   text-wrap: pretty;
 }
- 
+
 /* ── Chat bubbles ── */
 .chat {
   display: flex;
@@ -324,7 +324,7 @@ h2 .sub {
 }
 .chat::-webkit-scrollbar { width: 3px; }
 .chat::-webkit-scrollbar-thumb { background: var(--border-s); border-radius: 2px; }
- 
+
 .bbl {
   max-width: 90%;
   padding: 14px 20px;
@@ -357,7 +357,7 @@ h2 .sub {
 }
 .bbl-a .bbl-lbl { color: var(--accent); opacity: 1; }
 .hl { color: var(--accent); font-weight: 600; }
- 
+
 /* ── Code block ── */
 .code {
   background: var(--bg-card);
@@ -376,7 +376,7 @@ h2 .sub {
 }
 .code .kw { color: var(--accent); font-weight: 600; }
 .code .cm { color: var(--text-mute); }
- 
+
 /* ── Two-col ── */
 .two-col {
   display: grid;
@@ -387,7 +387,7 @@ h2 .sub {
   min-height: 0;
   align-items: start;
 }
- 
+
 /* ── Chips ── */
 .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; flex-shrink: 0; }
 .chip {
@@ -398,7 +398,7 @@ h2 .sub {
   padding: 6px 15px;
   border-radius: 4px;
 }
- 
+
 /* ── Progress bar ── */
 #prog {
   position: fixed;
@@ -408,7 +408,7 @@ h2 .sub {
   transition: width .32s ease;
   z-index: 300;
 }
- 
+
 /* ── Theme toggle button — CTA 컬러 룰 적용 ── */
 #themeBtn {
   position: fixed;
@@ -426,7 +426,7 @@ h2 .sub {
   transition: border-color .2s, color .2s;
 }
 #themeBtn:hover { border-color: var(--border-s); color: var(--text); }
- 
+
 /* ── Nav — CTA 화살표 버튼은 accent 컬러 룰 ── */
 nav {
   position: fixed;
@@ -456,7 +456,7 @@ nav {
 .nav-btn:hover { color: var(--text); background: var(--accent-soft); }
 .nav-btn:disabled { opacity: .2; cursor: default; }
 .nav-btn:disabled:hover { background: none; }
- 
+
 .dots { display: flex; gap: 5px; }
 .dot {
   width: 5px; height: 5px;
@@ -466,7 +466,7 @@ nav {
   transition: all .25s;
 }
 .dot.active { background: var(--accent); width: 16px; border-radius: 3px; }
- 
+
 .ctr {
   font-size: 12px;
   color: var(--text-mute);
@@ -474,7 +474,7 @@ nav {
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
- 
+
 .key-hint {
   position: fixed; bottom: 22px; right: 22px;
   font-size: 11px; color: var(--text-mute);
@@ -482,12 +482,12 @@ nav {
 </style>
 </head>
 <body>
- 
+
 <div id="prog"></div>
 <button id="themeBtn" onclick="toggleTheme()" title="라이트/다크 전환">◐</button>
- 
+
 <div class="deck" id="deck">
- 
+
   <!-- 01 타이틀 -->
   <div class="slide active">
     <div class="eyebrow">Google AI · Prompting Guide 101</div>
@@ -501,7 +501,7 @@ nav {
       <span class="chip">마스터 템플릿</span>
     </div>
   </div>
- 
+
   <!-- 02 4대 핵심 요소 -->
   <div class="slide">
     <div class="eyebrow">Core Elements</div>
@@ -531,7 +531,7 @@ nav {
       </div>
     </div>
   </div>
- 
+
   <!-- 03 베스트 프랙티스 -->
   <div class="slide">
     <div class="eyebrow">Best Practices</div>
@@ -568,7 +568,7 @@ nav {
       </div>
     </div>
   </div>
- 
+
   <!-- 04 프롬프트 코치 개요 -->
   <div class="slide">
     <div class="eyebrow">Prompt Coach</div>
@@ -597,7 +597,7 @@ nav {
       <p>AI가 전문가처럼 구조를 잡아주므로 사용자는 아이디어에만 집중하면 됩니다.</p>
     </div>
   </div>
- 
+
   <!-- 05 초안 다듬기 -->
   <div class="slide">
     <div class="eyebrow">Technique 1 · Refinement</div>
@@ -631,7 +631,7 @@ nav {
       </div>
     </div>
   </div>
- 
+
   <!-- 06 목회자 예시 -->
   <div class="slide">
     <div class="eyebrow">Real Example · Pastor</div>
@@ -651,7 +651,7 @@ nav {
       </div>
     </div>
   </div>
- 
+
   <!-- 06-B 목회자 예시 — 소그룹 교재 이미지 분석 -->
   <div class="slide">
     <div class="eyebrow">Real Example · Pastor — Image Input</div>
@@ -680,7 +680,7 @@ nav {
       <p>교재 이미지, 주보 스캔본, 필기 노트 — 어떤 이미지든 붙여넣으면 AI가 내용을 읽고 맞춤 프롬프트를 즉시 생성합니다.</p>
     </div>
   </div>
- 
+
   <!-- 07 역질문 유도 -->
   <div class="slide">
     <div class="eyebrow">Technique 2 · Reverse Prompting</div>
@@ -705,7 +705,7 @@ nav {
       </div>
     </div>
   </div>
- 
+
   <!-- 08 역질문 결과 -->
   <div class="slide">
     <div class="eyebrow">Technique 2 · Result</div>
@@ -713,13 +713,13 @@ nav {
     <div class="rule"></div>
     <div class="code"><span class="kw">너는</span> 교회 미디어 사역 10년 차 수석 편집자이자
 다빈치 리졸브 전문가야. <span class="cm">// 페르소나</span>
- 
+
 <span class="kw">다빈치 리졸브 18</span>로 편집 구성안과
 최적 Export 세팅 가이드를 작성해 줘. <span class="cm">// 과제</span>
- 
+
 유튜브(5분·가로) + 로비(3분·무음·자막).
 톤: 잔잔하고 감동적. <span class="cm">// 맥락</span>
- 
+
 ① 두 버전 컷 편집 흐름 구성안
 ② 화질 유지 + 용량 최적화 Export 세팅
    (포맷·코덱·해상도) 구분하여 정리. <span class="cm">// 형식</span></div>
@@ -728,7 +728,7 @@ nav {
       <p>대답만 하면 완벽히 구조화된 프롬프트를 얻습니다. 빈 종이 앞에서 고민할 필요가 없습니다.</p>
     </div>
   </div>
- 
+
   <!-- 09 마스터 템플릿 -->
   <div class="slide">
     <div class="eyebrow">Technique 3 · Master Template</div>
@@ -737,18 +737,18 @@ nav {
     <p class="lead" style="margin-bottom:0;">새 채팅창에 붙여넣으면 AI가 즉시 코치 모드로 세팅됩니다.</p>
     <div class="code"><span class="kw">지금부터 너는</span> 세계 최고의 프롬프트 엔지니어링 전문가야.
 나의 목표는 너에게서 가장 수준 높고 정확한 결과물을 얻는 거야.
- 
+
 짧은 아이디어를 내리면, 즉시 답하지 말고
 아래 3단계를 거쳐 줘.
- 
+
 <span class="kw">1. 질문하기</span>  — 필요한 조건 3가지 이하 핵심 질문
 <span class="kw">2. 프롬프트 제안</span> — 페르소나/과제/맥락/형식 적용 최적화 제안
 <span class="kw">3. 실행</span>       — 승인 후 최종 결과물 출력
- 
+
 이해했다면 <span class="cm">"어떤 작업의 프롬프트를 설계해 드릴까요?"</span>
 라고 대답해 줘.</div>
   </div>
- 
+
   <!-- 10 요약 -->
   <div class="slide">
     <div class="eyebrow">Summary</div>
@@ -790,9 +790,9 @@ nav {
       </div>
     </div>
   </div>
- 
+
 </div><!-- /deck -->
- 
+
 <nav>
   <button class="nav-btn" id="prev" onclick="go(-1)" disabled>&#8592;</button>
   <div class="dots" id="dots"></div>
@@ -800,7 +800,7 @@ nav {
   <button class="nav-btn" id="next" onclick="go(1)">&#8594;</button>
 </nav>
 <div class="key-hint">← → 키 이동</div>
- 
+
 <script>
   // ── DESIGN.md §1.1 다크 모드 룰:
   //    prefers-color-scheme 자동 감지 + localStorage 토글 영속
@@ -809,27 +809,27 @@ nav {
     const system = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', stored || system);
   })();
- 
+
   function toggleTheme() {
     const cur = document.documentElement.getAttribute('data-theme');
     const next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('cmds-theme', next);
   }
- 
+
   // ── Slides ──
   let cur = 0;
   const slides = document.querySelectorAll('.slide');
   const N = slides.length;
   const dotsEl = document.getElementById('dots');
- 
+
   slides.forEach((_, i) => {
     const d = document.createElement('div');
     d.className = 'dot' + (i === 0 ? ' active' : '');
     d.onclick = () => show(i);
     dotsEl.appendChild(d);
   });
- 
+
   function show(n) {
     slides[cur].classList.remove('active');
     dotsEl.children[cur].classList.remove('active');
@@ -841,14 +841,14 @@ nav {
     document.getElementById('prev').disabled = cur === 0;
     document.getElementById('next').disabled = cur === N - 1;
   }
- 
+
   function go(d) { show(cur + d); }
- 
+
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
   });
- 
+
   show(0);
 </script>
 </body>
